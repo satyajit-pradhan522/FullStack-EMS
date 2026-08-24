@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { dummyProfileData } from '../assets/assets'
 import Loading from '../components/Loading'
 import { Lock } from 'lucide-react'
@@ -41,7 +41,7 @@ const Settings = () => {
             <p className='text-sm text-slate-500'>Update your account password</p>
           </div>
         </div>
-        <button className='btn-secondary text-sm' onClick={() => setShowPasswordModel(true)}>
+        <button className='btn-secondary text-sm cursor-pointer ' onClick={() => setShowPasswordModel(true)}>
           <ChangePasswordModal open={showPasswordModel} onClose={() => setShowPasswordModel(false)} />
         </button>
       </div>
