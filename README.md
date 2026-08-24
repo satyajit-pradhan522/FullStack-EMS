@@ -1,114 +1,125 @@
-# Full Stack Employee Management System
+# StaffOps — Employee Management System
 
-A full-stack Employee Management System built with **React.js, Node.js, Express.js, and MongoDB**. The application provides employee management, attendance tracking, leave management, payslip management, authentication, and dashboard functionality through a separate frontend and backend architecture.
+A full-stack **Employee Management System** built with **React.js, Node.js, Express.js, and MongoDB**.
+
+StaffOps provides employee management, attendance tracking, leave management, payslip management, authentication, profile management, and dashboard functionality through a separate frontend and backend architecture.
 
 ## Features
 
-* User authentication and authorization
-* Employee management
-* Employee profile management
-* Attendance management
-* Leave application and management
-* Payslip management
-* Dashboard with employee-related information
-* RESTful API integration
-* Secure password handling using bcrypt
-* JWT-based authentication
-* Image/file upload support
-* Email functionality
-* Responsive user interface
-* Separate frontend and backend
+- User authentication and authorization
+- JWT-based authentication
+- Role-based access control
+- Employee management
+- Employee profile management
+- Attendance management
+- Leave application and management
+- Payslip management
+- Dashboard with employee-related information
+- RESTful API integration
+- Secure password hashing using bcrypt
+- Protected API routes
+- Image/file upload support
+- Email functionality
+- Background and scheduled jobs using Inngest
+- Responsive user interface
+- Separate frontend and backend architecture
 
 ## Tech Stack
 
 ### Frontend
 
-* React.js
-* Vite
-* React Router DOM
-* Axios
-* Tailwind CSS
-* Lucide React
-* React Hot Toast
-* date-fns
+- React.js
+- Vite
+- React Router DOM
+- Axios
+- Tailwind CSS
+- Lucide React
+- React Hot Toast
+- date-fns
 
 ### Backend
 
-* Node.js
-* Express.js
-* RESTful APIs
-* JSON Web Token (JWT)
-* bcrypt
-* Multer
-* Nodemailer
-* Inngest
-* CORS
-* dotenv
+- Node.js
+- Express.js
+- RESTful APIs
+- JSON Web Token (JWT)
+- bcrypt
+- Multer
+- Nodemailer
+- Inngest
+- CORS
+- dotenv
 
 ### Database
 
-* MongoDB
-* Mongoose
+- MongoDB
+- Mongoose
 
 ## Project Structure
 
 ```text
-FullStack-EMS/
+StaffOps/
 ├── client/
 │   ├── src/
 │   ├── public/
 │   └── package.json
 │
-└── server/
-    ├── config/
-    ├── controllers/
-    ├── middleware/
-    ├── models/
-    ├── routes/
-    ├── server.js
-    └── package.json
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── inngest/
+│   ├── seed.js
+│   ├── server.js
+│   └── package.json
+│
+├── .gitignore
+└── README.md
 ```
 
 ## Main Modules
 
 ### Authentication
 
-* User login and authentication
-* JWT-based session authentication
-* Password hashing using bcrypt
-* Protected application routes
+- User login and authentication
+- JWT-based authentication
+- Password hashing using bcrypt
+- Protected application routes
+- Role-based authorization
 
 ### Employee Management
 
-* Create employee records
-* View employee information
-* Update employee details
-* Manage employee profiles
+- Create employee records
+- View employee information
+- Update employee details
+- Manage employee profiles
 
 ### Attendance Management
 
-* Track employee attendance
-* Store attendance records
-* Retrieve attendance information
+- Track employee attendance
+- Store attendance records
+- Retrieve attendance information
 
 ### Leave Management
 
-* Submit leave applications
-* Manage leave requests
-* Track leave status
+- Submit leave applications
+- Manage leave requests
+- Track leave status
 
 ### Payslip Management
 
-* Manage employee payslip information
-* Retrieve payslip records
-* Display salary-related information
+- Manage employee payslip information
+- Retrieve payslip records
+- Display salary-related information
 
 ### Dashboard
 
-* Employee-related overview
-* Attendance information
-* Leave information
-* Payslip-related information
+- Employee overview
+- Attendance information
+- Leave information
+- Payslip-related information
 
 ## Application Architecture
 
@@ -123,64 +134,69 @@ Node.js Backend
        ↓
     Mongoose
        ↓
-   MongoDB
+    MongoDB
 ```
 
-## API Structure
+## Backend Architecture
 
-The backend follows a RESTful API architecture with separate routes and controllers for different application modules.
+The backend follows a modular REST API architecture.
 
 ```text
 Routes
-  ↓
+   ↓
 Controllers
-  ↓
+   ↓
 Models
-  ↓
+   ↓
 MongoDB
 ```
 
-The application separates business logic into controllers and database schemas into Mongoose models.
+- **Routes** handle API endpoints.
+- **Controllers** contain business logic.
+- **Models** define MongoDB data structures using Mongoose.
+- **Middleware** handles authentication and request processing.
+- **Config** contains application configuration such as database connection.
+- **Inngest** handles background and scheduled jobs.
 
 ## Database Models
 
-The backend contains models for the main application entities, including:
+The application uses Mongoose models for the main entities:
 
-* User
-* Employee
-* Attendance
-* Leave Application
-* Payslip
+- User
+- Employee
+- Attendance
+- Leave Application
+- Payslip
 
 ## Security
 
-The application includes:
+StaffOps implements several security practices:
 
-* JWT-based authentication
-* Password hashing with bcrypt
-* Protected routes
-* Authentication middleware
-* CORS configuration
-* Environment variables for sensitive configuration
+- JWT-based authentication
+- Password hashing with bcrypt
+- Protected routes
+- Authentication middleware
+- Role-based authorization
+- CORS configuration
+- Environment variables for sensitive configuration
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/satyajit-pradhan522/FullStack-EMS.git
-
-cd FullStack-EMS
+git clone https://github.com/satyajit-pradhan522/StaffOps.git
+cd StaffOps
 ```
 
-### 2. Install frontend dependencies
+### 2. Install Frontend Dependencies
 
 ```bash
 cd client
 npm install
 ```
 
-### 3. Install backend dependencies
+### 3. Install Backend Dependencies
 
 Open another terminal:
 
@@ -189,27 +205,36 @@ cd server
 npm install
 ```
 
-### 4. Configure environment variables
+### 4. Configure Environment Variables
 
-Create a `.env` file inside the `server` directory and configure the required environment variables used by the backend, including the MongoDB connection string and authentication configuration.
+Create a `.env` file inside the `server` directory.
 
 Example:
 
 ```env
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+ADMIN_EMAIL=your_admin_email
 ```
 
-Add any other environment variables required by the application services.
+Add the other environment variables required by the application services.
 
-### 5. Start the backend
+> Never commit the actual `.env` file or real credentials to GitHub.
+
+### 5. Start the Backend
 
 ```bash
 cd server
 npm run dev
 ```
 
-### 6. Start the frontend
+The backend runs on the configured port, for example:
+
+```text
+http://localhost:4000
+```
+
+### 6. Start the Frontend
 
 Open another terminal:
 
@@ -218,24 +243,72 @@ cd client
 npm run dev
 ```
 
-The frontend communicates with the backend through REST APIs.
+The frontend will be available at the Vite development URL, typically:
+
+```text
+http://localhost:5173
+```
+
+The React frontend communicates with the Node.js/Express backend through REST APIs.
+
+## Admin Setup
+
+For initial development, the project includes a seed script for creating the admin user.
+
+Run:
+
+```bash
+cd server
+node seed.js
+```
+
+Make sure the required MongoDB and environment variables are configured before running the seed script.
+
+## API Structure
+
+The backend provides separate API modules for different application features:
+
+```text
+/api/auth
+/api/employees
+/api/profile
+/api/attendance
+/api/leave
+/api/payslips
+/api/dashboard
+/api/inngest
+```
+
+Each module follows a route → controller → model architecture.
 
 ## Purpose
 
-This project demonstrates the development of a full-stack employee management application using the MERN stack.
+StaffOps demonstrates the development of a full-stack employee management application using the MERN stack.
 
-It demonstrates practical implementation of:
+The project demonstrates practical implementation of:
 
-* React.js frontend development
-* Node.js and Express.js backend development
-* RESTful API development
-* MongoDB database integration
-* Mongoose data modeling
-* JWT authentication
-* Password hashing
-* Employee management
-* Attendance management
-* Leave management
-* Payslip management
-* Frontend-backend API integration
-* Responsive UI development
+- React.js frontend development
+- Node.js and Express.js backend development
+- RESTful API development
+- MongoDB database integration
+- Mongoose data modeling
+- JWT authentication
+- Password hashing
+- Role-based authorization
+- Employee management
+- Attendance management
+- Leave management
+- Payslip management
+- Frontend-backend API integration
+- Responsive UI development
+- Email services
+- Background and scheduled jobs
+
+## Author
+
+**Satyajit Pradhan**
+
+Full-Stack Web Developer
+
+- GitHub: https://github.com/satyajit-pradhan522
+- LinkedIn: https://www.linkedin.com/in/satyajit-pradhan522/
